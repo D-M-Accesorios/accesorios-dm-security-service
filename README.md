@@ -278,6 +278,29 @@ git push origin HU-DEV-DYC-XX-ss-nombre
 # Crear Pull Request a develop
 ```
 
+## HUs Completadas
+
+|HU	|Descripción|
+|---|-----------|
+|HU-01	|Setup + Autenticación|
+|HU-02	|CRUD Empleados|
+|HU-03	|CRUD Clientes|
+|HU-04	|Gestión de Roles|
+|HU-05	|Documentación + Docker|
+|HU-RLS-01	|Release para Main|
+
+## Endpoints Disponibles
+
+|Endpoint	|Método	|Rol requerido|
+|-----------|-------|-------------|
+|/api/v1/health	|GET	|Público|
+|/api/v1/auth/login	|POST	|Público|
+|/api/v1/auth/me	|GET	|Autenticado|
+|/api/v1/empleados/	|GET/POST/PUT/DELETE	|ADMIN|
+|/api/v1/clientes/	|GET/POST/PUT/DELETE	|ADMIN/VENDEDOR|
+|/api/v1/roles/	|GET/POST/PUT/DELETE	|ADMIN|
+|/api/v1/roles/{id}/rol/{id}	|PATCH	|ADMIN|
+
 ## Licencia
 
 Proyecto interno de Accesorios DM.
