@@ -3,7 +3,7 @@ from typing import Optional
 
 class Settings(BaseSettings):
     # Database - PostgreSQL real
-    DATABASE_URL: str = "postgresql://admin:admin123@localhost:5434/accesorios_dm_db"
+    DATABASE_URL: str = "postgresql://admin:admin123@localhost:5433/accesorios_dm_db"
     
     # JWT
     SECRET_KEY: str = "your-secret-key-change-in-production"
@@ -11,7 +11,7 @@ class Settings(BaseSettings):
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
     
     # Server
-    PORT: int = 8890
+    PORT: int = 8889
     HOST: str = "0.0.0.0"
     
     class Config:
