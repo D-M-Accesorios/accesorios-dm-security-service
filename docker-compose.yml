@@ -1,23 +1,23 @@
 services:
   security-service:
     build: .
-    container_name: accesorios-dm-security-qa
+    container_name: accesorios-dm-security-prod
     restart: unless-stopped
     ports:
-      - "8889:8889"
+      - "8888:8888"
     environment:
-      - DATABASE_URL=postgresql://admin:admin123@accesorios-dm-postgres-qa:5432/accesorios_dm_db
-      - SECRET_KEY=qa-secret-key
+      - DATABASE_URL=postgresql://admin:admin123@accesorios-dm-postgres-prod:5432/accesorios_dm_db
+      - SECRET_KEY=${SECRET_KEY}
       - ALGORITHM=HS256
       - ACCESS_TOKEN_EXPIRE_MINUTES=30
-      - PORT=8889
+      - PORT=8888
       - HOST=0.0.0.0
     volumes:
       - ./app:/app/app
     networks:
-      - accesorios-dm-net-qa
+      - accesorios-dm-net-prod
 
 networks:
-  accesorios-dm-net-qa:
+  accesorios-dm-net-prod:
     external: true
-    name: accesorios-dm-database_accesorios-network-qa
+    name: accesorios-dm-database_accesorios-network-prod
