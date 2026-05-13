@@ -1,0 +1,3 @@
+# app/schemas/__init__.py
+from .auth import *
+from .empleado import *
