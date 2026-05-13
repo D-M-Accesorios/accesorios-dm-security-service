@@ -28,6 +28,8 @@ def create_access_token(data: dict, expires_delta: timedelta = None):
 def decode_access_token(token: str):
     try:
         payload = jwt.decode(token, settings.SECRET_KEY, algorithms=[settings.ALGORITHM])
+        print(f"DEBUG: Token decodificado: {payload}")  # Debug
         return payload
-    except JWTError:
+    except JWTError as e:
+        print(f"DEBUG: Error decodificando token: {e}")  # Debug
         return None

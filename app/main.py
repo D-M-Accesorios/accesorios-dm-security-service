@@ -1,12 +1,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.routers import auth
-from app.database import engine, Base
+from app.routers import auth_router, empleados_router
 from app.config import settings
-
-# NO crear tablas aquí (ya las creamos manualmente)
-# Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
     title="Security Service - Accesorios DM",
@@ -24,7 +20,8 @@ app.add_middleware(
 )
 
 # Incluir routers
-app.include_router(auth.router, prefix="/api/v1")
+app.include_router(auth_router, prefix="/api/v1")
+app.include_router(empleados_router, prefix="/api/v1")
 
 @app.get("/")
 def root():
