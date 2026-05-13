@@ -1,0 +1,23 @@
+services:
+  security-service:
+    build: .
+    container_name: accesorios-dm-security-dev
+    restart: unless-stopped
+    ports:
+      - "8890:8890"
+    environment:
+      - DATABASE_URL=postgresql://admin:admin123@accesorios-dm-postgres-dev:5432/accesorios_dm_db
+      - SECRET_KEY=dev-secret-key
+      - ALGORITHM=HS256
+      - ACCESS_TOKEN_EXPIRE_MINUTES=30
+      - PORT=8890
+      - HOST=0.0.0.0
+    volumes:
+      - ./app:/app/app
+    networks:
+      - accesorios-dm-net
+
+networks:
+  accesorios-dm-net:
+    external: true
+    name: accesorios-dm-database_accesorios-network-dev
