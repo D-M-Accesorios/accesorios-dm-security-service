@@ -32,11 +32,29 @@ def get_cliente(
         raise HTTPException(status_code=404, detail="Cliente no encontrado")
     return cliente
 
+@router.get("/correo/{correo}", response_model=ClienteResponse)
+def get_cliente_by_correo(
+    correo: str,
+    db: Session = Depends(get_db)
+):
+    """Obtener cliente por correo"""
+    
+    cliente = db.query(Cliente).filter(
+        Cliente.correo == correo
+    ).first()
+
+    if not cliente:
+        raise HTTPException(
+            status_code=404,
+            detail="Cliente no encontrado"
+        )
+
+    return cliente
+
 @router.post("/", response_model=ClienteResponse, status_code=status.HTTP_201_CREATED)
 def create_cliente(
     cliente_data: ClienteCreate,
-    db: Session = Depends(get_db),
-    current_user = Depends(require_role(["ADMIN", "VENDEDOR"]))
+    db: Session = Depends(get_db)
 ):
     """Crear nuevo cliente"""
     # Verificar si el correo ya existe
