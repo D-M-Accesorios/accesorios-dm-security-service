@@ -1,0 +1,36 @@
+# CODEOWNERS — accesorios-dm-security-service
+#
+# IMPORTANTE: Crear los equipos en GitHub antes de activar require_code_owner_reviews:
+#   - @D-M-Accesorios/leads      → arquitectos / tech leads
+#   - @D-M-Accesorios/backend    → desarrolladores backend
+#
+# Este servicio es crítico para la seguridad del sistema.
+# Cualquier cambio en autenticación, autorización o manejo de tokens
+# DEBE ser revisado por el lead de seguridad.
+
+# Propietario por defecto — todo require leads
+*                                   @D-M-Accesorios/leads
+
+# Infraestructura
+Dockerfile                          @D-M-Accesorios/leads
+docker-compose.yml                  @D-M-Accesorios/leads
+
+# Dependencias Python — verificar vulnerabilidades antes de aprobar
+requirements.txt                    @D-M-Accesorios/leads
+
+# Variables de entorno — contiene SECRET_KEY y configuración JWT
+.env.example                        @D-M-Accesorios/leads
+
+# Workflows CI/CD
+.github/                            @D-M-Accesorios/leads
+
+# Módulos de autenticación y autorización — máxima sensibilidad
+app/auth/                           @D-M-Accesorios/leads
+app/core/                           @D-M-Accesorios/leads
+
+# Modelos de datos — usuarios, roles, permisos
+app/models/                         @D-M-Accesorios/leads @D-M-Accesorios/backend
+
+# Routers y lógica de negocio
+app/routers/                        @D-M-Accesorios/backend @D-M-Accesorios/leads
+app/                                @D-M-Accesorios/backend @D-M-Accesorios/leads
